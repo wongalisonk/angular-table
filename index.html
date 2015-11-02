@@ -28,10 +28,10 @@
 				<div class="alert">
 
 					<!-- Add an expression to show your sortType variable -->
-					<p><strong>Sort by:{{sortType}}</strong></p>
+					<p><strong>Sort by: {{sortType}}</strong></p>
 
 					<!-- Add an expression to show your search variable -->
-					<p><strong>Search String:{{search}}</strong></p>
+					<p><strong>Search String: {{search}}</strong></p>
 
 				</div>
 			</form>
@@ -50,19 +50,18 @@
 						</td>
 						<td>
 							<!-- Add an ng-click event to set the variable sortType equal to 'salary' -->
-							<a href="#" ng-click="sortType='salary'">Salary</a>
+							<a href="#" ng-click="sortType='-salary'">Salary</a>
 						</td>
 					</tr>
 				</thead>
 				<tbody>
-
 					<!-- Create a table row for each person in your data object -->
-					
-						
+					<tr ng-repeat="p in data | orderBy:sortType | filter:search">	
 						<!-- Create 3 <td> elements to display name, job_title, and salary -->
-						
-
-
+						<td>{{p.name}}</td>
+						<td>{{p.job_title}}</td>
+						<td>{{p.salary | currency : '$' : 0}}</td>
+					</tr>						
 				</tbody>
 			</table>
 		</div>
